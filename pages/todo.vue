@@ -1,9 +1,5 @@
 <template>
   <div>
-    <header class="app-bar">
-      <div class="app-bar-title">ToDo App</div>
-    </header>
-
     <main class="main-content">
       <div class="add-todo">
         <input v-model="newTodo" placeholder="TODOを入力してください" @keyup.enter="addTodo" />
@@ -22,6 +18,9 @@
 </template>
 
 <script setup lang="ts">
+// definePageMeta({
+//   layout: 'simple'
+// })
 const newTodo = ref<string>('')
 const todos = ref<{ text: string; done: boolean }[]>([])
 
@@ -38,26 +37,6 @@ const removeTodo = (index: number) => {
 </script>
 
 <style>
-.app-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  background-color: #1976d2;
-  color: white;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-.app-bar-title {
-  font-size: 24px;
-  font-weight: bold;
-}
-
 .main-content {
   margin-top: 80px;
   padding: 20px;
