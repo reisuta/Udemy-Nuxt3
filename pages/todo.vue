@@ -1,6 +1,7 @@
 <template>
   <div>
     <main class="main-content">
+      <button @click="logout">Logout</button>
       <div class="add-todo">
         <input v-model="newTodo" placeholder="TODOを入力してください" @keyup.enter="addTodo" />
         <button @click="addTodo">追加</button>
@@ -18,9 +19,10 @@
 </template>
 
 <script setup lang="ts">
-// definePageMeta({
-//   layout: 'simple'
-// })
+definePageMeta({
+  middleware: 'auth',
+})
+const { logout } = useAuth()
 const newTodo = ref<string>('')
 const todos = ref<{ text: string; done: boolean }[]>([])
 

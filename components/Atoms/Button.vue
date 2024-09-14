@@ -1,6 +1,12 @@
 <template>
-  <button class="styled" type="button">ホームへ</button>
+  <button class="styled" type="button">{{ title }}</button>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  title: String,
+})
+</script>
 
 <style>
 .styled {
