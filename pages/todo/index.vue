@@ -1,7 +1,6 @@
 <template>
   <div>
     <main class="main-content">
-      <button @click="logout">Logout</button>
       <div class="add-todo">
         <button @click="$goToBlank('/')">ホーム画面へ新しいタブで遷移</button>
         <input v-model="newTodo" placeholder="TODOを入力してください" @keyup.enter="addTodo" />
@@ -11,7 +10,7 @@
       <ul class="todo-list">
         <li v-for="(todo, index) in todos" :key="index" :class="{ done: todo.done }">
           <input type="checkbox" v-model="todo.done" />
-          <span>{{ todo.text }}</span>
+          <span><NuxtLink :to="{ name: 'todo-id', params: { id: 1 } }">{{ todo.text }}</NuxtLink></span>
           <button @click="removeTodo(index)">削除</button>
         </li>
       </ul>
