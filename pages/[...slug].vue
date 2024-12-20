@@ -1,6 +1,8 @@
 <template>
-  <h1>sample</h1>
-  <p>{{ route.params }}</p>
+  <main>
+    {{ route.path }}
+    <ContentDoc />
+  </main>
 </template>
 
 <script setup lang="ts">
