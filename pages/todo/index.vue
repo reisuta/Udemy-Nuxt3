@@ -19,10 +19,13 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  middleware: 'auth',
-})
+// definePageMeta({
+//   middleware: 'auth',
+// })
+import { useApiStatusStore } from '~/store/apiStatus'
 const { logout } = useAuth()
+const apiStatusStore = useApiStatusStore()
+const { api } = useApiFetch()
 const { $goToBlank } = useNuxtApp()
 const newTodo = ref<string>('')
 const todos = ref<{ text: string; done: boolean }[]>([])
@@ -37,6 +40,18 @@ const addTodo = () => {
 const removeTodo = (index: number) => {
   todos.value.splice(index, 1)
 }
+
+const { data } = await useFetch('/api/todo')
+// const { data, error } = await useAsyncData(() => {
+//   return api('/api/todo', {
+//     method: 'get'
+//   })
+// })
+// if (error.value && error.value.data) {
+//   apiError.value = error.value.data.message
+// }
+console.log(apiStatusStore.statusCode)
+console.log(data.value)
 </script>
 
 <style>
