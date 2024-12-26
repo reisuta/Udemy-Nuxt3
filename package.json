@@ -12,7 +12,9 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxt/content": "^2.13.4",
+    "@pinia/nuxt": "^0.9.0",
     "nuxt": "^3.13.0",
+    "pinia": "^2.3.0",
     "vue": "latest"
   },
   "devDependencies": {

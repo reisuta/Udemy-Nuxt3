@@ -5,7 +5,10 @@ export default defineNuxtConfig({
 //       path: '~/components',
 //       pathPrefix: false,
 //     },
-//   ],
+//
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   css: [
@@ -15,6 +18,7 @@ export default defineNuxtConfig({
     transpile: ['vuetify'],
   },
   modules: [
+    '@pinia/nuxt',
     '@nuxt/content',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
