@@ -3,6 +3,7 @@
     <main class="main-content">
       <div class="add-todo">
         <button @click="$goToBlank('/')">ホーム画面へ新しいタブで遷移</button>
+        <button @click="goTo('/todo/1')">遷移</button>
         <input v-model="newTodo" placeholder="TODOを入力してください" @keyup.enter="addTodo" />
         <button @click="addTodo">追加</button>
       </div>
@@ -23,12 +24,15 @@
 //   middleware: 'auth',
 // })
 import { useApiStatusStore } from '~/store/apiStatus'
+import { initialTodoData } from '~/consts/todo'
+import type { Todo } from '~/types/todo'
+
 const { logout } = useAuth()
 const apiStatusStore = useApiStatusStore()
 const { api } = useApiFetch()
 const { $goToBlank } = useNuxtApp()
 const newTodo = ref<string>('')
-const todos = ref<{ text: string; done: boolean }[]>([])
+const todos = ref<Todo[]>(initialTodoData)
 
 const addTodo = () => {
   if (newTodo.value.trim() !== '') {
