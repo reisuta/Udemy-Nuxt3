@@ -9,6 +9,15 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  runtimeConfig: {
+    // サーバーサイドでのみ取得可能
+    apiSecret: '1234567890',
+    // クライアントサイドでも取得可能
+    public: {
+      apiBase: '/api/todo',
+      myEnvVariable: 'runtimeの設定'
+    }
+  },
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   css: [

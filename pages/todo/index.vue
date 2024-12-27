@@ -27,6 +27,12 @@ import { useApiStatusStore } from '~/store/apiStatus'
 import { initialTodoData } from '~/consts/todo'
 import type { Todo } from '~/types/todo'
 
+
+const runtimeConfig = useRuntimeConfig()
+console.log(runtimeConfig.apiSecret)
+console.log(runtimeConfig.public.apiBase)
+console.log(runtimeConfig.public.myEnvVariable)
+
 const { logout } = useAuth()
 const apiStatusStore = useApiStatusStore()
 const { api } = useApiFetch()
@@ -45,7 +51,7 @@ const removeTodo = (index: number) => {
   todos.value.splice(index, 1)
 }
 
-const { data } = await useFetch('/api/todo')
+const { data } = await useFetch('/api/env')
 // const { data, error } = await useAsyncData(() => {
 //   return api('/api/todo', {
 //     method: 'get'
@@ -54,7 +60,7 @@ const { data } = await useFetch('/api/todo')
 // if (error.value && error.value.data) {
 //   apiError.value = error.value.data.message
 // }
-console.log(apiStatusStore.statusCode)
+console.log(process.env)
 console.log(data.value)
 </script>
 
