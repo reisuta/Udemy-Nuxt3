@@ -1,6 +1,6 @@
 export function useAuth() {
-  const user = useState('user', () => undefined)
-  const token = useState('token', () => undefined)
+  const user = useState<{ name: string; id: number; } | undefined>('user', () => undefined)
+  const token = useState<string | undefined>('token', () => undefined)
 
   const login = async (username: string, password: string) => {
     const { data, error } = await useFetch('/api/login', {
